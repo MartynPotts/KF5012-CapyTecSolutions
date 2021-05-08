@@ -247,6 +247,13 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         pnlAssign.add(btnAssign);
 
         JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Arial", Font.PLAIN, 15));
+        btnBack.setSize(150, 20);
+        btnBack.addActionListener(e -> {
+            setVisible(false);
+        });
+        pnlAssign.add(btnBack);
+
     }
 
     @Override

@@ -20,6 +20,7 @@ public class CapyTecSolutionsController {
         loginGUI.setVisible(true);
     }
 
+
     /*  Login Section */
     // Caretaker login
     public void loginCaretaker(String username, String password) {
@@ -59,10 +60,9 @@ public class CapyTecSolutionsController {
     void loadTaskAllocation() {
         taskAllocationGUI = new TaskAllocationGUI(this);
         taskAllocationGUI.setVisible(true);
-        loginGUI.setVisible(false);
-        administratorMainMenu.setVisible(false);
         taskAllocationGUI.displayTableData(data.getAllTasks());
         taskAllocationGUI.displayComboboxData(data.getCaretakers());
+        loginGUI.setVisible(false);
     }
 
     void assignTask(int taskID, String caretakerName) {
@@ -96,6 +96,7 @@ public class CapyTecSolutionsController {
         taskEntryGUI.setVisible(true);
         loginGUI.setVisible(false);
         taskEntryGUI.displayComboboxData(data.getAdministrators());
+        loginGUI.setVisible(false);
     }
 
     void addTask(String title, String location, int timeRequired, String priority, String description, String frequency, String submittedBy, int completed) {

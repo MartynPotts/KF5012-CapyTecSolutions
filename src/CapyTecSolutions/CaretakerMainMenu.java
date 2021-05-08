@@ -53,6 +53,7 @@ public class CaretakerMainMenu extends JFrame {
         btnViewAllocateTasks.addActionListener(e ->{
             CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
             caretakerMenuController.loadTaskAllocation();
+            setVisible(false);
         });
         pnlMenuItems.add(btnViewAllocateTasks);
 

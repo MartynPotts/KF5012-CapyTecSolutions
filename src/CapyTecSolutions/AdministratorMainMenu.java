@@ -32,7 +32,7 @@ public class AdministratorMainMenu extends JFrame{
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-        setTitle("Caretaker Menu");
+        setTitle("Administrator Menu");
         setBounds(300, 90, 500, 500);
 
         pnlMenu = new JPanel();
@@ -55,6 +55,7 @@ public class AdministratorMainMenu extends JFrame{
         btnAddTask.addActionListener(e -> {
             CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
             caretakerMenuController.loadTaskEntry();
+            setVisible(false);
         });
         pnlMenuItems.add(btnAddTask);
 
@@ -65,6 +66,7 @@ public class AdministratorMainMenu extends JFrame{
         btnViewAllocateTasks.addActionListener(e -> {
             CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
             caretakerMenuController.loadTaskAllocation();
+            setVisible(false);
         });
         pnlMenuItems.add(btnViewAllocateTasks);
 
