@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class EditTaskDetailsDialog extends JDialog {
 
-    TaskAllocationController editTaskDetailsController;
+    CapyTecSolutionsController editTaskDetailsController;
 
     private final JPanel pnlContent = new JPanel();
 
@@ -131,3 +131,4 @@ public class EditTaskDetailsDialog extends JDialog {
             }
         });
     }
+}

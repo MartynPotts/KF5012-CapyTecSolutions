@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TaskEntryGUI extends JFrame implements ActionListener {
 
-    TaskEntryController theTaskEntryHandler;
+    CapyTecSolutionsController theTaskEntryHandler;
 
     // Variables which will act as the components of form
     private Container c;
@@ -55,7 +55,7 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
     }
 
 
-    public TaskEntryGUI(TaskEntryController taskEntryController) {
+    public TaskEntryGUI(CapyTecSolutionsController taskEntryController) {
 
         theTaskEntryHandler = taskEntryController;
 
@@ -247,12 +247,13 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
 
     }
 
-    void displayComboboxData(ArrayList<Administrator> administratorArrayList){
+    void displayComboboxData(ArrayList<Administrator> administratorArrayList) {
         DefaultComboBoxModel<String> mdl = (DefaultComboBoxModel<String>) cbCreator.getModel();
         mdl.setSelectedItem(null);
 
-        for(Administrator a : administratorArrayList){
+        for (Administrator a : administratorArrayList) {
             String s = a.getAdministratorFName() + " " + a.getAdministratorSName();
             cbCreator.addItem(s);
         }
     }
+}

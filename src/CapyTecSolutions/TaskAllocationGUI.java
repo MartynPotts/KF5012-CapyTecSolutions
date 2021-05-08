@@ -99,7 +99,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         tblTasks.setRowSorter(sorter);
 
         JLabel lblFilter = new JLabel("Filter: ");
-        lblFilter.setFont(new Font("Arial",Font.PLAIN,15));
+        lblFilter.setFont(new Font("Arial", Font.PLAIN, 15));
         lblFilter.setSize(200, 20);
         pnlAssign.add(lblFilter);
 
@@ -113,12 +113,12 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         pnlAssign.add(btnFilter);
         btnFilter.addActionListener(e -> {
             String filterTxt = tFilter.getText();
-            if(filterTxt.length() == 0){
+            if (filterTxt.length() == 0) {
                 sorter.setRowFilter(null);
-            } else{
-                try{
+            } else {
+                try {
                     sorter.setRowFilter(RowFilter.regexFilter(filterTxt));
-                } catch(PatternSyntaxException pse){
+                } catch (PatternSyntaxException pse) {
                     JOptionPane.showMessageDialog(null, "This item can't be found");
                 }
             }
@@ -274,3 +274,4 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
             cbCaretaker.addItem(s);
         }
     }
+}

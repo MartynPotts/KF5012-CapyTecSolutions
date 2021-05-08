@@ -58,4 +58,22 @@ public class CapyTecSolutionsController {
         taskEntryForm.setVisible(true);
         taskEntryForm.displayComboboxData(data.getAdministrators());
     }
+
+    void addTask(String title, String location, int timeRequired, String priority, String description, String frequency, String submittedBy, int completed){
+        /* create Task - Task newTask = new Task();
+         *  set the details for the task - newTask.setTitle, newTask.setLocation etc...
+         *  add to the database -  insert newTask into task list
+         */
+        Task newTask = new Task();
+        newTask.setTitle(title);
+        newTask.setLocation(location);
+        newTask.setTimeRequired(timeRequired);
+        newTask.setPriority(priority);
+        newTask.setDescription(description);
+        newTask.setFrequency(frequency);
+        newTask.setSubmittedBy(submittedBy);
+        newTask.setCompleted(completed);
+
+        data.AddTask(newTask);
+    }
 }
