@@ -8,13 +8,14 @@ public class CapyTecSolutionsController {
     AdministratorMainMenu administratorMainMenu;
     CaretakerMainMenu caretakerMainMenu;
     TaskAllocationGUI taskAllocationGUI;
-    TaskEntryGUI taskEntryForm;
+    TaskEntryGUI taskEntryGUI;
 
     public static void main(String[] args) {
         CapyTecSolutionsController cts = new CapyTecSolutionsController();
     }
 
     public CapyTecSolutionsController() {
+        data = new DBController();
         loginGUI = new LoginGUI(this);
         loginGUI.setVisible(true);
     }
@@ -22,18 +23,16 @@ public class CapyTecSolutionsController {
     /*  Login Section */
     // Caretaker login
     public void loginCaretaker(String username, String password) {
-        data = new DBController();
         data.validateCaretaker(username, password);
     }
 
     // Admin Login
     public void loginAdmin(String username, String password) {
-        data = new DBController();
         data.validateAdmin(username, password);
     }
 
     // Logout
-    public void logout(){
+    public void logout() {
         loginGUI = new LoginGUI();
         loginGUI.setVisible(true);
     }
@@ -49,8 +48,8 @@ public class CapyTecSolutionsController {
 
     // Load Admin menu
     public void loadAdministratorMainMenu() {
-        administratorMainMenu = new AdministratorMainMenu();
-     //   administratorMainMenu.setVisible(true);
+        administratorMainMenu = new AdministratorMainMenu(this);
+        administratorMainMenu.setVisible(true);
         System.out.println("Load Admin menu");
         loginGUI.setVisible(false);
     }
@@ -58,15 +57,15 @@ public class CapyTecSolutionsController {
     /* Task Allocation */
     // Load the Task Allocation GUI
     void loadTaskAllocation() {
-        data = new DBController();
         taskAllocationGUI = new TaskAllocationGUI(this);
         taskAllocationGUI.setVisible(true);
+        loginGUI.setVisible(false);
+        administratorMainMenu.setVisible(false);
         taskAllocationGUI.displayTableData(data.getAllTasks());
         taskAllocationGUI.displayComboboxData(data.getCaretakers());
     }
 
     void assignTask(int taskID, String caretakerName) {
-
         Task assignedTask = new Task();
         assignedTask.setCaretaker(caretakerName);
         data.assignTask(taskID, assignedTask);
@@ -90,12 +89,13 @@ public class CapyTecSolutionsController {
         data.editTask(taskID, newTask);
     }
 
+    /* Task Entry */
     // Load task entry form
     void loadTaskEntry() {
-        data = new DBController();
-        taskEntryForm = new TaskEntryGUI();
-        taskEntryForm.setVisible(true);
-        taskEntryForm.displayComboboxData(data.getAdministrators());
+        taskEntryGUI = new TaskEntryGUI(this);
+        taskEntryGUI.setVisible(true);
+        loginGUI.setVisible(false);
+        taskEntryGUI.displayComboboxData(data.getAdministrators());
     }
 
     void addTask(String title, String location, int timeRequired, String priority, String description, String frequency, String submittedBy, int completed) {

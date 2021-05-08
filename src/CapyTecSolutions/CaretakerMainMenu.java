@@ -28,7 +28,7 @@ public class CaretakerMainMenu extends JFrame {
 
         caretakerMenuController = caretakerController;
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setTitle("Caretaker Menu");
         setBounds(300,90,500,500);

@@ -49,7 +49,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         theTaskAllocationHandler = taskAllocationController;
 
         setTitle("Add Task");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(300, 90, 900, 600);
         setResizable(false);
 
@@ -152,7 +152,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
 
             if (rowToView >= 0) {
                 EditTaskDetailsDialog dialog = new EditTaskDetailsDialog();
-                dialog.lblTaskID.setText("Task ID: " + (Integer) tblTasks.getValueAt(rowToView, 0));
+                dialog.lblTaskID.setText("Task ID: " +  tblTasks.getValueAt(rowToView, 0));
                 dialog.lblTaskName.setText("Task Name: ");
                 dialog.tTaskName.setText((String) tblTasks.getValueAt(rowToView, 1));
                 dialog.lblLocation.setText("Location: ");
@@ -163,7 +163,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
                 dialog.tDescription.setText((String) tblTasks.getValueAt(rowToView, 4));
                 dialog.lblFrequency.setText("Frequency: ");
                 dialog.tFrequency.setText((String) tblTasks.getValueAt(rowToView, 5));
-                dialog.lblCreator.setText("Submitted By: " + (String) tblTasks.getValueAt(rowToView, 6));
+                dialog.lblCreator.setText("Submitted By: " + tblTasks.getValueAt(rowToView, 6));
                 if (tblTasks.getValueAt(rowToView, 7) == null) {
                     dialog.lblAssignedTo.setText("Assigned To: No one");
                 } else {
@@ -245,6 +245,8 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
             }
         });
         pnlAssign.add(btnAssign);
+
+        JButton btnBack = new JButton("Back");
     }
 
     @Override

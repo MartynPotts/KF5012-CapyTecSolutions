@@ -25,6 +25,7 @@ public class DBController {
                     success = true;
                     CapyTecSolutionsController loginSuccess = new CapyTecSolutionsController();
                     loginSuccess.loadCaretakerMainMenu();
+                    caretakerLoginList.close();
                 }
             }
         } catch (Exception ex) {
@@ -37,16 +38,17 @@ public class DBController {
     }
 
     public void validateAdmin(String username, String password) {
-        String sqlString = "SELECT Username , Password FROM Administrator";
+        String sqlString = "SELECT Username , Password FROM Administrator;";
         ResultSet administratorLoginList = database.runSQLQuery(sqlString);
         boolean success = false;
 
         try {
             while (administratorLoginList.next()) {
-                if ((administratorLoginList.getString(1).equals(username)) && (administratorLoginList.getString(2).equals(username))) {
+                if ((administratorLoginList.getString(1).equals(username)) && (administratorLoginList.getString(2).equals(password))) {
                     success = true;
                     CapyTecSolutionsController loginSuccess = new CapyTecSolutionsController();
                     loginSuccess.loadAdministratorMainMenu();
+                    administratorLoginList.close();
                 }
             }
         } catch (Exception ex) {
@@ -130,10 +132,12 @@ public class DBController {
                 newTask.setTimeRequired(taskList.getInt(9));
                 newTask.setCompleted(taskList.getInt(10));
                 answer.add(newTask);
+                taskList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");
             System.out.println(e.getMessage());
+            System.out.println(e.getErrorCode());
         }
         return answer;
     }
@@ -152,7 +156,7 @@ public class DBController {
                 newCaretaker.setCaretakerUsername(caretakerList.getString(4));
                 newCaretaker.setCaretakerPassword(caretakerList.getString(5));
                 caretakers.add(newCaretaker);
-
+                caretakerList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");
@@ -175,6 +179,7 @@ public class DBController {
                 newAdministrator.setAdministratorUsername(administratorList.getString(4));
                 newAdministrator.setAdministratorPassword(administratorList.getString(5));
                 administrators.add(newAdministrator);
+                administratorList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");
