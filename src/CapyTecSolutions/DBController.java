@@ -11,7 +11,51 @@ public class DBController {
 
     public DBController() {
         database = new DBConnection();
-        database.Connect("src\\capytec_solutions\\CapyTecSolutions.db");
+        database.Connect("src\\CapyTecSolutions\\CapyTecSolutions.db");
+    }
+
+    public void validateCaretaker(String username, String password) {
+        String sqlString = "SELECT Username, Password FROM Caretaker";
+        ResultSet caretakerLoginList = database.runSQLQuery(sqlString);
+        boolean success = false;
+
+        try {
+            while (caretakerLoginList.next()) {
+                if ((caretakerLoginList.getString(1).equals(username)) && (caretakerLoginList.getString(2).equals(password))) {
+                    success = true;
+                    CapyTecSolutionsController loginSuccess = new CapyTecSolutionsController();
+                    loginSuccess.loadCaretakerMainMenu();
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Error occured " + ex.getMessage());
+        }
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Login Failed. Check Username and Password and try again");
+        }
+    }
+
+    public void validateAdmin(String username, String password) {
+        String sqlString = "SELECT Username , Password FROM Administrator";
+        ResultSet administratorLoginList = database.runSQLQuery(sqlString);
+        boolean success = false;
+
+        try {
+            while (administratorLoginList.next()) {
+                if ((administratorLoginList.getString(1).equals(username)) && (administratorLoginList.getString(2).equals(username))) {
+                    success = true;
+                    CapyTecSolutionsController loginSuccess = new CapyTecSolutionsController();
+                    loginSuccess.loadAdministratorMainMenu();
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Error occured " + ex.getMessage());
+        }
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Login Failed. Check Username and Password and try again");
+        }
     }
 
     public void AddTask(Task task) {

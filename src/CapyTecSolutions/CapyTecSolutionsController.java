@@ -18,9 +18,31 @@ public class CapyTecSolutionsController {
        loginGUI.setVisible(true);
     }
 
-    // Login Section
+    /*  Login Section */
+    // Caretaker login
+    public void loginCaretaker(String username, String password){
+        data = new DBController();
+        data.validateCaretaker(username, password);
+    }
 
+    // Admin Login
+    public void loginAdmin(String username, String password){
+        data = new DBController();
+        data.validateAdmin(username,password);
+    }
 
+    /* Load Main Menu */
+    // Load caretaker menu
+    public void loadCaretakerMainMenu(){
+
+    }
+
+    // Load Admin menu
+    public void loadAdministratorMainMenu(){
+
+    }
+
+    /* Task Allocation */
     // Load the Task Allocation GUI
     void loadTaskAllocation(){
         data = new DBController();

@@ -20,47 +20,47 @@ public class LoginGUI extends JDialog {
     public JButton btnLogin;
     public JButton btnAdminLogin;
 
-    public LoginGUI(){
+    public LoginGUI() {
 
     }
 
-    public static void main(String[] args){
-        try{
+    public static void main(String[] args) {
+        try {
             LoginGUI gui = new LoginGUI();
             gui.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             gui.setVisible(true);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public LoginGUI(CapyTecSolutionsController loginHandler){
+    public LoginGUI(CapyTecSolutionsController loginHandler) {
 
         theLoginHandler = loginHandler;
 
         setModal(true);
-        setBounds(100,100,300,300);
+        setBounds(100, 100, 300, 300);
         getContentPane().setLayout(new BorderLayout());
         setTitle("CapyTec Solutions - Log in");
-        getContentPane().add(pnlContent,BorderLayout.CENTER);
+        getContentPane().add(pnlContent, BorderLayout.CENTER);
 
         lblUsername = new JLabel("Username : ");
         pnlContent.add(lblUsername);
 
         tUsername = new JTextField();
-        tUsername.setLocation(100,25);
+        tUsername.setColumns(5);
         pnlContent.add(tUsername);
 
         lblPassword = new JLabel("Password :");
         pnlContent.add(lblPassword);
 
         tPassword = new JPasswordField();
-        tPassword.setLocation(100,50);
+        tPassword.setColumns(5);
         pnlContent.add(tPassword);
 
         pnlButtons = new JPanel();
         pnlButtons.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        getContentPane().add(pnlButtons,BorderLayout.SOUTH);
+        getContentPane().add(pnlButtons, BorderLayout.SOUTH);
 
         btnLogin = new JButton("Login");
         btnLogin.setActionCommand("Login");
@@ -70,7 +70,7 @@ public class LoginGUI extends JDialog {
             setModal(false);
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
-          //  theLoginHandler.loginCaretaker(username,password);
+            theLoginHandler.loginCaretaker(username, password);
             dispose();
         });
 
@@ -78,11 +78,11 @@ public class LoginGUI extends JDialog {
         btnAdminLogin.setActionCommand("Login");
         pnlButtons.add(btnAdminLogin);
         getRootPane().setDefaultButton(btnAdminLogin);
-        btnAdminLogin.addActionListener(e ->{
+        btnAdminLogin.addActionListener(e -> {
             setModal(false);
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
-        //    theLoginHandler.loginAdmin(username,password);
+            theLoginHandler.loginAdmin(username, password);
             dispose();
         });
 
