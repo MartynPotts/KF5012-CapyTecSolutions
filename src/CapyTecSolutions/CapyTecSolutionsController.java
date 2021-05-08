@@ -4,6 +4,8 @@ public class CapyTecSolutionsController {
 
     private DBController data;
 
+    LoginGUI loginGUI;
+
     TaskAllocationGUI taskAllocationGUI;
     TaskEntryGUI taskEntryForm;
 
@@ -12,9 +14,11 @@ public class CapyTecSolutionsController {
     }
 
     public CapyTecSolutionsController() {
-       // loginGUI = new LoginGUI(this);
-       // loginGUI.setVisible(true);
+       loginGUI = new LoginGUI(this);
+       loginGUI.setVisible(true);
     }
+
+    // Login Section
 
 
     // Load the Task Allocation GUI
