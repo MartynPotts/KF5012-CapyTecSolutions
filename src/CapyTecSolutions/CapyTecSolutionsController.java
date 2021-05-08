@@ -15,7 +15,6 @@ public class CapyTecSolutionsController {
     }
 
     public CapyTecSolutionsController() {
-        data = new DBController();
         loginGUI = new LoginGUI(this);
         loginGUI.setVisible(true);
     }
@@ -23,14 +22,20 @@ public class CapyTecSolutionsController {
     /*  Login Section */
     // Caretaker login
     public void loginCaretaker(String username, String password) {
+        data = new DBController();
         data.validateCaretaker(username, password);
-
     }
 
     // Admin Login
     public void loginAdmin(String username, String password) {
+        data = new DBController();
         data.validateAdmin(username, password);
+    }
 
+    // Logout
+    public void logout(){
+        loginGUI = new LoginGUI();
+        loginGUI.setVisible(true);
     }
 
     /* Load Main Menu */
