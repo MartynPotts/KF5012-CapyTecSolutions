@@ -31,8 +31,8 @@ public class DBController {
             System.out.println("Error occured " + ex.getMessage());
         }
 
-        if (success) {
-            JOptionPane.showMessageDialog(null, "Login Failed. Check Username and Password and try again");
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "Login Failed. Check Username/Password and try again");
         }
     }
 
@@ -53,8 +53,8 @@ public class DBController {
             System.out.println("Error occured " + ex.getMessage());
         }
 
-        if (success) {
-            JOptionPane.showMessageDialog(null, "Login Failed. Check Username and Password and try again");
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "Login Failed. Check Username/Password and try again");
         }
     }
 

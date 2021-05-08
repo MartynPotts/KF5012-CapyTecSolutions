@@ -3,7 +3,7 @@ package CapyTecSolutions;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginGUI extends JDialog {
+public class LoginGUI extends JFrame {
 
     CapyTecSolutionsController theLoginHandler;
 
@@ -27,7 +27,7 @@ public class LoginGUI extends JDialog {
     public static void main(String[] args) {
         try {
             LoginGUI gui = new LoginGUI();
-            gui.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            gui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             gui.setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -38,8 +38,7 @@ public class LoginGUI extends JDialog {
 
         theLoginHandler = loginHandler;
 
-        setModal(true);
-        setBounds(100, 100, 300, 300);
+        setBounds(100, 100, 500, 500);
         getContentPane().setLayout(new BorderLayout());
         setTitle("CapyTec Solutions - Log in");
         getContentPane().add(pnlContent, BorderLayout.CENTER);
@@ -48,14 +47,14 @@ public class LoginGUI extends JDialog {
         pnlContent.add(lblUsername);
 
         tUsername = new JTextField();
-        tUsername.setColumns(5);
+        tUsername.setColumns(10);
         pnlContent.add(tUsername);
 
         lblPassword = new JLabel("Password :");
         pnlContent.add(lblPassword);
 
         tPassword = new JPasswordField();
-        tPassword.setColumns(5);
+        tPassword.setColumns(10);
         pnlContent.add(tPassword);
 
         pnlButtons = new JPanel();
@@ -65,9 +64,7 @@ public class LoginGUI extends JDialog {
         btnLogin = new JButton("Login");
         btnLogin.setActionCommand("Login");
         pnlButtons.add(btnLogin);
-        getRootPane().setDefaultButton(btnLogin);
         btnLogin.addActionListener(e -> {
-            setModal(false);
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
             theLoginHandler.loginCaretaker(username, password);
@@ -77,9 +74,7 @@ public class LoginGUI extends JDialog {
         btnAdminLogin = new JButton("Admin Login");
         btnAdminLogin.setActionCommand("Login");
         pnlButtons.add(btnAdminLogin);
-        getRootPane().setDefaultButton(btnAdminLogin);
         btnAdminLogin.addActionListener(e -> {
-            setModal(false);
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
             theLoginHandler.loginAdmin(username, password);
