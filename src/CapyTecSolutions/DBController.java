@@ -158,7 +158,6 @@ public class DBController {
                 newCaretaker.setCaretakerUsername(caretakerList.getString(4));
                 newCaretaker.setCaretakerPassword(caretakerList.getString(5));
                 caretakers.add(newCaretaker);
-                caretakerList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");
@@ -181,7 +180,6 @@ public class DBController {
                 newAdministrator.setAdministratorUsername(administratorList.getString(4));
                 newAdministrator.setAdministratorPassword(administratorList.getString(5));
                 administrators.add(newAdministrator);
-                administratorList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");
