@@ -143,7 +143,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         });
         pnlAssign.add(btnRefresh);
 
-        // View Details
+        // Edit Details
         JButton btnEditDetails = new JButton("Edit Details");
         btnEditDetails.setFont(new Font("Arial", Font.PLAIN, 15));
         btnEditDetails.setSize(200, 20);

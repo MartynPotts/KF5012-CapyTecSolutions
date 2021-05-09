@@ -9,7 +9,7 @@ public class DBController {
 
     private final DBConnection database;
 
-    public DBController(){
+    public DBController() {
         database = new DBConnection();
         database.Connect();
     }
@@ -60,8 +60,55 @@ public class DBController {
         }
     }
 
+    public void addCaretaker(Caretaker caretaker) {
+        String sqlString = new String("INSERT INTO Caretakers (CaretakerFName,CaretakerSName,Username,Password) VALUES('");
+        sqlString = sqlString + caretaker.getCaretakerFName() + "','";
+        sqlString = sqlString + caretaker.getCaretakerSName() + "','";
+        sqlString = sqlString + caretaker.getCaretakerUsername() + "','";
+        sqlString = sqlString + caretaker.getCaretakerPassword() + ");";
+
+        boolean success = database.runSQL(sqlString);
+
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "This caretaker could not be added");
+            System.out.println("Failed to run query");
+        } else {
+            JOptionPane.showMessageDialog(null, "Caretaker added");
+        }
+    }
+
+    public void editCaretaker(int caretakerID, Caretaker caretaker){
+        String sqlString = ("UPDATE Caretaker SET");
+        sqlString = sqlString + "CaretakerFName = '" + caretaker.getCaretakerFName() + "',";
+        sqlString = sqlString + "CaretakerSName = '" + caretaker.getCaretakerSName() + "',";
+        sqlString = sqlString + "Username = '" + caretaker.getCaretakerUsername() + "',";
+        sqlString = sqlString + "Password = '" + caretaker.getCaretakerPassword() + "' WHERE CaretakerID = " + caretakerID + ";";
+
+        boolean success = database.runSQL(sqlString);
+
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "This caretaker could not be edited.");
+            System.out.println("Failed to run query: " + sqlString);
+        } else {
+            JOptionPane.showMessageDialog(null, "Caretaker details have been updated");
+        }
+    }
+
+    public void deleteCaretaker(int caretakerID){
+        String sqlString = new String("DELETE FROM Caretakers WHERE CaretakerID = " + caretakerID + ";");
+
+        boolean success = database.runSQL(sqlString);
+
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "This caretaker could not be deleted.");
+            System.out.println("Failed to run query: " + sqlString);
+        } else {
+            JOptionPane.showMessageDialog(null, "Caretaker has been deleted");
+        }
+    }
+
     public void AddTask(Task task) {
-        String sqlString = ("INSERT INTO Task (Title,Location,Priority,Description,Frequency,SubmittedBy,TimeRequired,Completed)  VALUES('");
+        String sqlString = "INSERT INTO Task (Title,Location,Priority,Description,Frequency,SubmittedBy,TimeRequired,Completed)  VALUES('";
         sqlString = sqlString + task.getTitle() + "','";
         sqlString = sqlString + task.getLocation() + "','";
         sqlString = sqlString + task.getPriority() + "','";
@@ -83,7 +130,7 @@ public class DBController {
     }
 
     public void editTask(int taskID, Task task) {
-        String sqlString = ("UPDATE Task SET ");
+        String sqlString = "UPDATE Task SET ";
         sqlString = sqlString + "Title = '" + task.getTitle() + "',";
         sqlString = sqlString + "Location = '" + task.getLocation() + "',";
         sqlString = sqlString + "Priority = '" + task.getPriority() + "',";
@@ -100,11 +147,13 @@ public class DBController {
         if (!success) {
             JOptionPane.showMessageDialog(null, "This task could not be edited.");
             System.out.println("Failed to run query: " + sqlString);
+        } else {
+            JOptionPane.showMessageDialog(null, "Task details have been updated");
         }
     }
 
     public void assignTask(int taskID, Task task) {
-        String sqlString = ("UPDATE Task SET AssignedTo= '");
+        String sqlString = "UPDATE Task SET AssignedTo= '";
         sqlString = sqlString + task.getCaretaker() + "' WHERE taskID=" + taskID + " ;";
 
         boolean success = database.runSQL(sqlString);

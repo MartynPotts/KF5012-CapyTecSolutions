@@ -16,6 +16,7 @@ public class AdministratorMainMenu extends JFrame{
 
     private JButton btnAddTask;
     private JButton btnViewAllocateTasks;
+    private JButton btnManageCaretakers;
     private JButton btnLogout;
 
     public AdministratorMainMenu(){
@@ -53,8 +54,8 @@ public class AdministratorMainMenu extends JFrame{
         btnAddTask.setSize(100, 20);
         btnAddTask.setLocation(350, 300);
         btnAddTask.addActionListener(e -> {
-            CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
-            caretakerMenuController.loadTaskEntry();
+            CapyTecSolutionsController adminMenuController = new CapyTecSolutionsController();
+            adminMenuController.loadTaskEntry();
             setVisible(false);
         });
         pnlMenuItems.add(btnAddTask);
@@ -64,12 +65,21 @@ public class AdministratorMainMenu extends JFrame{
         btnViewAllocateTasks.setSize(100, 20);
         btnViewAllocateTasks.setLocation(350, 300);
         btnViewAllocateTasks.addActionListener(e -> {
-            CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
-            caretakerMenuController.loadTaskAllocation();
+            CapyTecSolutionsController adminMenuController = new CapyTecSolutionsController();
+            adminMenuController.loadTaskAllocation();
             setVisible(false);
         });
         pnlMenuItems.add(btnViewAllocateTasks);
 
+        btnManageCaretakers = new JButton("Manage Caretakers");
+        btnManageCaretakers.setFont(new Font("Arial", Font.PLAIN, 15));
+        btnManageCaretakers.setSize(100, 20);
+        btnManageCaretakers.setLocation(350, 300);
+        btnManageCaretakers.addActionListener(e ->{
+            CapyTecSolutionsController adminMenuController = new CapyTecSolutionsController();
+            adminMenuController.loadCaretakerManagementMenu();
+            setVisible(false);
+        });
 
         btnLogout = new JButton("Log Out");
         btnLogout.setFont(new Font("Arial", Font.PLAIN, 15));

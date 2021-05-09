@@ -29,11 +29,9 @@ public class EditTaskDetailsDialog extends JDialog {
     public JTextField tTimeRequired;
     public JTextField tFrequency;
     public JTextField tDescription;
-    public JTextField tCreator;
     public JTextField tAssignedTo;
 
     public JButton btnUpdate;
-    public JButton btnEditDetails;
 
     public static void main(String[] args) {
         try {

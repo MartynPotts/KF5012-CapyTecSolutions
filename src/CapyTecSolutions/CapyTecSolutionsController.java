@@ -7,6 +7,7 @@ public class CapyTecSolutionsController {
     LoginGUI loginGUI;
     AdministratorMainMenu administratorMainMenu;
     CaretakerMainMenu caretakerMainMenu;
+    CaretakerManagementMenu caretakerManagementMenu;
     TaskAllocationGUI taskAllocationGUI;
     TaskEntryGUI taskEntryGUI;
 
@@ -53,6 +54,40 @@ public class CapyTecSolutionsController {
         administratorMainMenu.setVisible(true);
         System.out.println("Load Admin menu");
         loginGUI.setVisible(false);
+    }
+
+    /* Caretaker management menu */
+    // Load the caretaker management menu (Add, edit and delete caretakers)
+    void loadCaretakerManagementMenu(){
+
+    }
+
+    // Add Caretaker
+    void addCaretaker(String caretakerFName, String caretakerSName, String username, String password){
+        Caretaker newCaretaker = new Caretaker();
+        newCaretaker.setCaretakerFName(caretakerFName);
+        newCaretaker.setCaretakerSName(caretakerSName);
+        newCaretaker.setCaretakerUsername(username);
+        newCaretaker.setCaretakerPassword(password);
+        data.addCaretaker(newCaretaker);
+    }
+
+    // Edit Caretaker
+    void editCaretaker(int caretakerID, String caretakerFName, String caretakerSName, String username, String password){
+        Caretaker newCaretaker = new Caretaker();
+        newCaretaker.setCaretakerFName(caretakerFName);
+        newCaretaker.setCaretakerSName(caretakerSName);
+        newCaretaker.setCaretakerUsername(username);
+        newCaretaker.setCaretakerPassword(password);
+        data.editCaretaker(caretakerID, newCaretaker);
+    }
+
+    void deleteCaretaker(int caretakerID){
+        data.deleteCaretaker(caretakerID);
+    }
+
+    void refreshCaretakerTable() {
+        caretakerManagementMenu.displayTableData(data.getCaretakers());
     }
 
     /* Task Allocation */
