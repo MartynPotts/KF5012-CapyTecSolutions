@@ -211,7 +211,7 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
                         , newTaskFrequency, newTaskCreator, completed);
             }
 
-            JOptionPane.showMessageDialog(null, "Task has been added.");
+
 
             tTaskName.setText("");
             tLocation.setText("");

@@ -9,9 +9,9 @@ public class DBController {
 
     private final DBConnection database;
 
-    public DBController() {
+    public DBController(){
         database = new DBConnection();
-        database.Connect("src\\CapyTecSolutions\\CapyTecSolutions.db");
+        database.Connect();
     }
 
     public void validateCaretaker(String username, String password) {
@@ -67,15 +67,17 @@ public class DBController {
         sqlString = sqlString + task.getPriority() + "','";
         sqlString = sqlString + task.getDescription() + "','";
         sqlString = sqlString + task.getFrequency() + "','";
-        sqlString = sqlString + task.getSubmittedBy() + "','";
-        sqlString = sqlString + task.getTimeRequired() + "','";
-        sqlString = sqlString + task.getCompleted() + "');";
+        sqlString = sqlString + task.getSubmittedBy() + "',";
+        sqlString = sqlString + task.getTimeRequired() + ",";
+        sqlString = sqlString + task.getCompleted() + ");";
 
         boolean success = database.runSQL(sqlString);
 
         if (!success) {
             JOptionPane.showMessageDialog(null, "This task could not be added. Option 1: the task already exists. Option 2: you missed some information");
             System.out.println("Failed to run query: " + sqlString);
+        } else {
+            JOptionPane.showMessageDialog(null, "Task has been added.");
         }
 
     }

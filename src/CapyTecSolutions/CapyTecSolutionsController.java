@@ -14,7 +14,7 @@ public class CapyTecSolutionsController {
         CapyTecSolutionsController cts = new CapyTecSolutionsController();
     }
 
-    public CapyTecSolutionsController() {
+    public CapyTecSolutionsController(){
         data = new DBController();
         loginGUI = new LoginGUI(this);
         loginGUI.setVisible(true);
