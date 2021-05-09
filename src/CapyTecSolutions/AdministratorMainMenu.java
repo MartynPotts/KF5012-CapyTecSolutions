@@ -66,7 +66,7 @@ public class AdministratorMainMenu extends JFrame{
         btnViewAllocateTasks.setLocation(350, 300);
         btnViewAllocateTasks.addActionListener(e -> {
             CapyTecSolutionsController adminMenuController = new CapyTecSolutionsController();
-            adminMenuController.loadTaskAllocation();
+            adminMenuController.loadViewTask();
             setVisible(false);
         });
         pnlMenuItems.add(btnViewAllocateTasks);

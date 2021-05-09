@@ -9,6 +9,7 @@ public class CapyTecSolutionsController {
     CaretakerMainMenu caretakerMainMenu;
     CaretakerManagementMenu caretakerManagementMenu;
     TaskAllocationGUI taskAllocationGUI;
+    ViewTaskGUI viewTaskGUI;
     TaskEntryGUI taskEntryGUI;
 
     public static void main(String[] args) {
@@ -151,5 +152,14 @@ public class CapyTecSolutionsController {
         newTask.setCompleted(completed);
 
         data.AddTask(newTask);
+    }
+
+    /* View Task */
+    // Load view Task
+    void loadViewTask(){
+        viewTaskGUI = new ViewTaskGUI(this);
+        viewTaskGUI.setVisible(true);
+        viewTaskGUI.displayTableData(data.getAllTasks());
+        loginGUI.setVisible(false);
     }
 }
