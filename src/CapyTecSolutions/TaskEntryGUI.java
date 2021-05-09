@@ -32,6 +32,8 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
     private JComboBox cbCreator;
 
     private JButton btnAdd;
+    private JButton btnClear;
+    private JButton btnBack;
 
     public TaskEntryGUI() {
 
@@ -192,7 +194,7 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
         btnAdd = new JButton("Add Task");
         btnAdd.setFont(new Font("Arial", Font.PLAIN, 15));
         btnAdd.setSize(100, 20);
-        btnAdd.setLocation(350, 300);
+        btnAdd.setLocation(300, 300);
         btnAdd.addActionListener(e -> {
             String newTaskTitle = tTaskName.getText();
             String newTaskLocation = tLocation.getText();
@@ -211,8 +213,6 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
                         , newTaskFrequency, newTaskCreator, completed);
             }
 
-
-
             tTaskName.setText("");
             tLocation.setText("");
             tTimeRequired.setText("");
@@ -221,13 +221,13 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
             tFrequency.setText("");
             tDescription.setText("");
         });
-
         c.add(btnAdd);
-        btnAdd = new JButton("Clear");
-        btnAdd.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnAdd.setSize(100, 20);
-        btnAdd.setLocation(475, 300);
-        btnAdd.addActionListener(e -> {
+
+        btnClear = new JButton("Clear");
+        btnClear.setFont(new Font("Arial", Font.PLAIN, 15));
+        btnClear.setSize(100, 20);
+        btnClear.setLocation(415, 300);
+        btnClear.addActionListener(e -> {
 
             JOptionPane.showMessageDialog(null, "Form Cleared.");
             tTaskName.setText("");
@@ -238,7 +238,18 @@ public class TaskEntryGUI extends JFrame implements ActionListener {
             tFrequency.setText("");
             tDescription.setText("");
         });
-        c.add(btnAdd);
+        c.add(btnClear);
+
+        btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Arial", Font.PLAIN, 15));
+        btnBack.setSize(100, 20);
+        btnBack.setLocation(525, 300);
+        btnBack.addActionListener(e -> {
+            theTaskEntryHandler.loadAdministratorMainMenu();
+            theTaskEntryHandler.administratorMainMenu.setVisible(true);
+            setVisible(false);
+        });
+        c.add(btnBack);
     }
 
 

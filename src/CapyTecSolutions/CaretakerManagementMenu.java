@@ -12,9 +12,7 @@ public class CaretakerManagementMenu extends JFrame {
 
     CapyTecSolutionsController caretakerManagementMenuController;
 
-    private JButton btnAddCaretaker;
-    private JButton btnEditCaretaker;
-    private JButton btnDeleteCaretaker;
+
 
     private JTable tblCaretakers;
 
@@ -59,8 +57,8 @@ public class CaretakerManagementMenu extends JFrame {
         tblCaretakers.setAutoCreateRowSorter(true);
         spCaretakers.setViewportView(tblCaretakers);
 
-        JPanel pnlManange = new JPanel();
-        c.add(pnlManange, BorderLayout.SOUTH);
+        JPanel pnlManage = new JPanel();
+        c.add(pnlManage, BorderLayout.SOUTH);
 
         JButton btnRefresh = new JButton("Refresh");
         btnRefresh.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -70,7 +68,7 @@ public class CaretakerManagementMenu extends JFrame {
                 caretakerManagementMenuController.refreshCaretakerTable();
             }
         });
-        pnlManange.add(btnRefresh);
+        pnlManage.add(btnRefresh);
 
         JButton btnAddCaretaker = new JButton("Add Caretaker");
         btnAddCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -91,7 +89,7 @@ public class CaretakerManagementMenu extends JFrame {
                 caretakerManagementMenuController.refreshCaretakerTable();
             }
         });
-        pnlManange.add(btnAddCaretaker);
+        pnlManage.add(btnAddCaretaker);
 
         JButton btnEditCaretaker = new JButton("Edit Caretaker");
         btnEditCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -137,7 +135,7 @@ public class CaretakerManagementMenu extends JFrame {
 
             }
         });
-        pnlManange.add(btnEditCaretaker);
+        pnlManage.add(btnEditCaretaker);
 
         JButton btnDeleteCaretaker = new JButton("Delete Caretaker");
         btnDeleteCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -153,7 +151,17 @@ public class CaretakerManagementMenu extends JFrame {
                 caretakerManagementMenuController.refreshCaretakerTable();
             }
         });
-        pnlManange.add(btnDeleteCaretaker);
+        pnlManage.add(btnDeleteCaretaker);
+
+        JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Arial", Font.PLAIN, 15));
+        btnBack.setSize(150, 20);
+        btnBack.addActionListener(e -> {
+            caretakerManagementMenuController.loadAdministratorMainMenu();
+            caretakerManagementMenuController.administratorMainMenu.setVisible(true);
+            setVisible(false);
+        });
+        pnlManage.add(btnBack);
 
     }
 

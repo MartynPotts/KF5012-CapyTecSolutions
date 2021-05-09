@@ -184,30 +184,32 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
                 String submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
                 String caretaker;
 
-                try {
-                    title = dialog.tTaskName.getText();
-                    location = dialog.tLocation.getText();
-                    timeRequired = Integer.parseInt(dialog.tTimeRequired.getText());
-                    priority = dialog.tPriority.getText();
-                    description = dialog.tDescription.getText();
-                    frequency = dialog.tFrequency.getText();
-                    caretaker = dialog.tAssignedTo.getText();
+                if(dialog.btnUpdate.getModel().isPressed()) {
+                    try {
+                        title = dialog.tTaskName.getText();
+                        location = dialog.tLocation.getText();
+                        timeRequired = Integer.parseInt(dialog.tTimeRequired.getText());
+                        priority = dialog.tPriority.getText();
+                        description = dialog.tDescription.getText();
+                        frequency = dialog.tFrequency.getText();
+                        caretaker = dialog.tAssignedTo.getText();
 
-                } catch (Exception ex) {
-                    title = (String) tblTasks.getValueAt(rowToEdit, 1);
-                    location = (String) tblTasks.getValueAt(rowToEdit, 2);
-                    priority = (String) tblTasks.getValueAt(rowToEdit, 3);
-                    description = (String) tblTasks.getValueAt(rowToEdit, 4);
-                    frequency = (String) tblTasks.getValueAt(rowToEdit, 5);
-                    submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
-                    caretaker = (String) tblTasks.getValueAt(rowToEdit, 7);
-                    timeRequired = (Integer) tblTasks.getValueAt(rowToEdit, 8);
+                    } catch (Exception ex) {
+                        title = (String) tblTasks.getValueAt(rowToEdit, 1);
+                        location = (String) tblTasks.getValueAt(rowToEdit, 2);
+                        priority = (String) tblTasks.getValueAt(rowToEdit, 3);
+                        description = (String) tblTasks.getValueAt(rowToEdit, 4);
+                        frequency = (String) tblTasks.getValueAt(rowToEdit, 5);
+                        submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
+                        caretaker = (String) tblTasks.getValueAt(rowToEdit, 7);
+                        timeRequired = (Integer) tblTasks.getValueAt(rowToEdit, 8);
 
+                    }
+                    if (!title.isEmpty()) {
+                        taskAllocationController.editTask(taskId, title, location, timeRequired, priority, description, frequency, submittedBy, caretaker, 0);
+                    }
+                    theTaskAllocationHandler.refreshTable();
                 }
-                if (!title.isEmpty()) {
-                    taskAllocationController.editTask(taskId, title, location, timeRequired, priority, description, frequency, submittedBy, caretaker, 0);
-                }
-                theTaskAllocationHandler.refreshTable();
 
             }
         });
@@ -251,6 +253,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         btnBack.setSize(150, 20);
         btnBack.addActionListener(e -> {
             setVisible(false);
+
         });
         pnlAssign.add(btnBack);
 

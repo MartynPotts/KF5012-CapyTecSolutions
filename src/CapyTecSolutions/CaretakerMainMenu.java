@@ -65,6 +65,7 @@ public class CaretakerMainMenu extends JFrame {
             CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
             caretakerMenuController.logout();
             setVisible(false);
+            caretakerMenuController.loginGUI.setVisible(true);
         });
         pnlMenuItems.add(btnLogout);
 

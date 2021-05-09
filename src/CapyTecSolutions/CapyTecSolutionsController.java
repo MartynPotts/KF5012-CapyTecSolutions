@@ -35,8 +35,6 @@ public class CapyTecSolutionsController {
 
     // Logout
     public void logout() {
-        loginGUI = new LoginGUI();
-        loginGUI.setVisible(true);
     }
 
     /* Load Main Menu */

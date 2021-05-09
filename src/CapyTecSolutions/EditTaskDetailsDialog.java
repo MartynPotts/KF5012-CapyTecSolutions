@@ -32,6 +32,7 @@ public class EditTaskDetailsDialog extends JDialog {
     public JTextField tAssignedTo;
 
     public JButton btnUpdate;
+    public JButton btnCancel;
 
     public static void main(String[] args) {
         try {
@@ -122,6 +123,15 @@ public class EditTaskDetailsDialog extends JDialog {
         pnlButtons.add(btnUpdate);
         getRootPane().setDefaultButton(btnUpdate);
         btnUpdate.addActionListener(e -> {
+            setModal(false);
+            dispose();
+        });
+
+        btnCancel = new JButton("Cancel");
+        btnCancel.setActionCommand("Cancel");
+        pnlButtons.add(btnCancel);
+        getRootPane().setDefaultButton(btnCancel);
+        btnCancel.addActionListener(e -> {
             setModal(false);
             dispose();
         });

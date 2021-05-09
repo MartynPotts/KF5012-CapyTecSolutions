@@ -87,9 +87,10 @@ public class AdministratorMainMenu extends JFrame{
         btnLogout.setSize(100, 20);
         btnLogout.setLocation(350, 300);
         btnLogout.addActionListener(e -> {
-            CapyTecSolutionsController caretakerMenuController = new CapyTecSolutionsController();
-            caretakerMenuController.logout();
+            CapyTecSolutionsController adminMenuController = new CapyTecSolutionsController();
+            adminMenuController.logout();
             setVisible(false);
+            adminMenuController.loginGUI.setVisible(true);
         });
         pnlMenuItems.add(btnLogout);
     }

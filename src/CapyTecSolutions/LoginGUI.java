@@ -68,6 +68,7 @@ public class LoginGUI extends JFrame {
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
             theLoginHandler.loginCaretaker(username, password);
+            setVisible(false);
         });
 
         btnAdminLogin = new JButton("Admin Login");
@@ -77,6 +78,7 @@ public class LoginGUI extends JFrame {
             String username = tUsername.getText();
             String password = String.valueOf(tPassword.getPassword());
             theLoginHandler.loginAdmin(username, password);
+            setVisible(false);
         });
 
     }
