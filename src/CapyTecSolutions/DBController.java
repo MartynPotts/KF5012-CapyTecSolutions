@@ -95,7 +95,7 @@ public class DBController {
     }
 
     public void deleteCaretaker(int caretakerID){
-        String sqlString = new String("DELETE FROM Caretakers WHERE CaretakerID = " + caretakerID + ";");
+        String sqlString = new String("DELETE FROM Caretaker WHERE CaretakerID = " + caretakerID + ";");
 
         boolean success = database.runSQL(sqlString);
 

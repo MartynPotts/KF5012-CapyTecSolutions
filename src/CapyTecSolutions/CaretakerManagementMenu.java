@@ -35,7 +35,7 @@ public class CaretakerManagementMenu extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setTitle("Caretaker Management Menu");
-        setBounds(300, 90, 500, 500);
+        setBounds(300, 90, 900, 600);
 
         JPanel c = new JPanel();
         c.setLayout(new BorderLayout(0, 0));
@@ -64,7 +64,6 @@ public class CaretakerManagementMenu extends JFrame {
 
         JButton btnRefresh = new JButton("Refresh");
         btnRefresh.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnRefresh.setSize(200, 20);
         btnRefresh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,7 +74,6 @@ public class CaretakerManagementMenu extends JFrame {
 
         JButton btnAddCaretaker = new JButton("Add Caretaker");
         btnAddCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnAddCaretaker.setSize(100, 20);
         btnAddCaretaker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,8 +85,8 @@ public class CaretakerManagementMenu extends JFrame {
                 String caretakerUsername = dialog.tCaretakerUsername.getText();
                 String caretakerPassword = dialog.tCaretakerPassword.getText();
 
-                if((!caretakerFName.isEmpty()) && (!caretakerSName.isEmpty()) && (!caretakerUsername.isEmpty()) && (!caretakerPassword.isEmpty())){
-                    caretakerManagementMenuController.addCaretaker(caretakerFName,caretakerSName,caretakerUsername,caretakerPassword);
+                if ((!caretakerFName.isEmpty()) && (!caretakerSName.isEmpty()) && (!caretakerUsername.isEmpty()) && (!caretakerPassword.isEmpty())) {
+                    caretakerManagementMenuController.addCaretaker(caretakerFName, caretakerSName, caretakerUsername, caretakerPassword);
                 }
                 caretakerManagementMenuController.refreshCaretakerTable();
             }
@@ -97,16 +95,44 @@ public class CaretakerManagementMenu extends JFrame {
 
         JButton btnEditCaretaker = new JButton("Edit Caretaker");
         btnEditCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnEditCaretaker.setSize(100, 20);
         btnEditCaretaker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 int rowToChange = tblCaretakers.getSelectedRow();
 
-                if(rowToChange >= 0){
-                    
+                if (rowToChange >= 0) {
+                    EditCaretakerDetailsDialog dialog = new EditCaretakerDetailsDialog();
+                    dialog.lblCaretakerID.setText("Caretaker ID: " + tblCaretakers.getValueAt(rowToChange, 0));
+                    dialog.tCaretakerFName.setText((String) tblCaretakers.getValueAt(rowToChange, 1));
+                    dialog.tCaretakerSName.setText((String) tblCaretakers.getValueAt(rowToChange, 2));
+                    dialog.tCaretakerUsername.setText((String) tblCaretakers.getValueAt(rowToChange, 3));
+                    dialog.tCaretakerPassword.setText((String) tblCaretakers.getValueAt(rowToChange, 4));
+
+                    int caretakerID = (Integer) tblCaretakers.getValueAt(rowToChange, 0);
+                    String caretakerFName;
+                    String caretakerSName;
+                    String caretakerUsername;
+                    String caretakerPassword;
+
+                    try {
+                        caretakerFName = dialog.tCaretakerFName.getText();
+                        caretakerSName = dialog.tCaretakerSName.getText();
+                        caretakerUsername = dialog.tCaretakerUsername.getText();
+                        caretakerPassword = dialog.tCaretakerPassword.getText();
+                    } catch (Exception ex){
+                        caretakerFName = (String) tblCaretakers.getValueAt(rowToChange, 1);
+                        caretakerSName = (String) tblCaretakers.getValueAt(rowToChange, 2);
+                        caretakerUsername = (String) tblCaretakers.getValueAt(rowToChange, 3);
+                        caretakerPassword = (String) tblCaretakers.getValueAt(rowToChange, 4);
+                    }
+
+                    if ((!caretakerFName.isEmpty()) && (!caretakerSName.isEmpty()) && (!caretakerUsername.isEmpty()) && (!caretakerPassword.isEmpty())) {
+                        caretakerManagementMenuController.editCaretaker(caretakerID,caretakerFName, caretakerSName, caretakerUsername, caretakerPassword);
+                    }
+                    caretakerManagementMenuController.refreshCaretakerTable();
                 }
+
 
             }
         });
@@ -114,11 +140,16 @@ public class CaretakerManagementMenu extends JFrame {
 
         JButton btnDeleteCaretaker = new JButton("Delete Caretaker");
         btnDeleteCaretaker.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnDeleteCaretaker.setSize(100, 20);
         btnDeleteCaretaker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int rowtoDelete = tblCaretakers.getSelectedRow();
 
+                if(rowtoDelete >= 0){
+                    int caretakerID = (Integer) tblCaretakers.getValueAt(rowtoDelete, 0);
+                    caretakerManagementMenuController.deleteCaretaker(caretakerID);
+                }
+                caretakerManagementMenuController.refreshCaretakerTable();
             }
         });
         pnlManange.add(btnDeleteCaretaker);

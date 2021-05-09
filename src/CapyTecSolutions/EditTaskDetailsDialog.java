@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class EditTaskDetailsDialog extends JDialog {
 
-    CapyTecSolutionsController editTaskDetailsController;
+
 
     private final JPanel pnlContent = new JPanel();
 
@@ -121,12 +121,9 @@ public class EditTaskDetailsDialog extends JDialog {
         btnUpdate.setActionCommand("Update");
         pnlButtons.add(btnUpdate);
         getRootPane().setDefaultButton(btnUpdate);
-        btnUpdate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setModal(false);
-                dispose();
-            }
+        btnUpdate.addActionListener(e -> {
+            setModal(false);
+            dispose();
         });
     }
 }

@@ -148,40 +148,40 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         btnEditDetails.setFont(new Font("Arial", Font.PLAIN, 15));
         btnEditDetails.setSize(200, 20);
         btnEditDetails.addActionListener(e -> {
-            int rowToView = tblTasks.getSelectedRow();
+            int rowToEdit = tblTasks.getSelectedRow();
 
-            if (rowToView >= 0) {
+            if (rowToEdit >= 0) {
                 EditTaskDetailsDialog dialog = new EditTaskDetailsDialog();
-                dialog.lblTaskID.setText("Task ID: " +  tblTasks.getValueAt(rowToView, 0));
+                dialog.lblTaskID.setText("Task ID: " +  tblTasks.getValueAt(rowToEdit, 0));
                 dialog.lblTaskName.setText("Task Name: ");
-                dialog.tTaskName.setText((String) tblTasks.getValueAt(rowToView, 1));
+                dialog.tTaskName.setText((String) tblTasks.getValueAt(rowToEdit, 1));
                 dialog.lblLocation.setText("Location: ");
-                dialog.tLocation.setText((String) tblTasks.getValueAt(rowToView, 2));
+                dialog.tLocation.setText((String) tblTasks.getValueAt(rowToEdit, 2));
                 dialog.lblPriority.setText("Priority: ");
-                dialog.tPriority.setText((String) tblTasks.getValueAt(rowToView, 3));
+                dialog.tPriority.setText((String) tblTasks.getValueAt(rowToEdit, 3));
                 dialog.lblDescription.setText("Description: ");
-                dialog.tDescription.setText((String) tblTasks.getValueAt(rowToView, 4));
+                dialog.tDescription.setText((String) tblTasks.getValueAt(rowToEdit, 4));
                 dialog.lblFrequency.setText("Frequency: ");
-                dialog.tFrequency.setText((String) tblTasks.getValueAt(rowToView, 5));
-                dialog.lblCreator.setText("Submitted By: " + tblTasks.getValueAt(rowToView, 6));
-                if (tblTasks.getValueAt(rowToView, 7) == null) {
+                dialog.tFrequency.setText((String) tblTasks.getValueAt(rowToEdit, 5));
+                dialog.lblCreator.setText("Submitted By: " + tblTasks.getValueAt(rowToEdit, 6));
+                if (tblTasks.getValueAt(rowToEdit, 7) == null) {
                     dialog.lblAssignedTo.setText("Assigned To: No one");
                 } else {
                     dialog.lblAssignedTo.setText("Assigned To: ");
-                    dialog.tAssignedTo.setText((String) tblTasks.getValueAt(rowToView, 7));
+                    dialog.tAssignedTo.setText((String) tblTasks.getValueAt(rowToEdit, 7));
                 }
                 dialog.lblTimeRequired.setText("Duration (mins): ");
-                dialog.tTimeRequired.setText(String.valueOf(tblTasks.getValueAt(rowToView, 8)));
+                dialog.tTimeRequired.setText(String.valueOf(tblTasks.getValueAt(rowToEdit, 8)));
                 dialog.setVisible(true);
 
-                int taskId = (Integer) tblTasks.getValueAt(rowToView, 0);
+                int taskId = (Integer) tblTasks.getValueAt(rowToEdit, 0);
                 String title;
                 String location;
                 int timeRequired;
                 String priority;
                 String description;
                 String frequency;
-                String submittedBy = (String) tblTasks.getValueAt(rowToView, 6);
+                String submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
                 String caretaker;
 
                 try {
@@ -194,14 +194,14 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
                     caretaker = dialog.tAssignedTo.getText();
 
                 } catch (Exception ex) {
-                    title = (String) tblTasks.getValueAt(rowToView, 1);
-                    location = (String) tblTasks.getValueAt(rowToView, 2);
-                    priority = (String) tblTasks.getValueAt(rowToView, 3);
-                    description = (String) tblTasks.getValueAt(rowToView, 4);
-                    frequency = (String) tblTasks.getValueAt(rowToView, 5);
-                    submittedBy = (String) tblTasks.getValueAt(rowToView, 6);
-                    caretaker = (String) tblTasks.getValueAt(rowToView, 7);
-                    timeRequired = (Integer) tblTasks.getValueAt(rowToView, 8);
+                    title = (String) tblTasks.getValueAt(rowToEdit, 1);
+                    location = (String) tblTasks.getValueAt(rowToEdit, 2);
+                    priority = (String) tblTasks.getValueAt(rowToEdit, 3);
+                    description = (String) tblTasks.getValueAt(rowToEdit, 4);
+                    frequency = (String) tblTasks.getValueAt(rowToEdit, 5);
+                    submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
+                    caretaker = (String) tblTasks.getValueAt(rowToEdit, 7);
+                    timeRequired = (Integer) tblTasks.getValueAt(rowToEdit, 8);
 
                 }
                 if (!title.isEmpty()) {
