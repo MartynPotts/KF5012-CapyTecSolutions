@@ -78,7 +78,7 @@ public class DBController {
     }
 
     public void editCaretaker(int caretakerID, Caretaker caretaker){
-        String sqlString = ("UPDATE Caretaker SET");
+        String sqlString = ("UPDATE Caretaker SET ");
         sqlString = sqlString + "CaretakerFName = '" + caretaker.getCaretakerFName() + "',";
         sqlString = sqlString + "CaretakerSName = '" + caretaker.getCaretakerSName() + "',";
         sqlString = sqlString + "Username = '" + caretaker.getCaretakerUsername() + "',";

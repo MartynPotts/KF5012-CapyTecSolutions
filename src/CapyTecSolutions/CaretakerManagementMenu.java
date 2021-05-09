@@ -108,6 +108,7 @@ public class CaretakerManagementMenu extends JFrame {
                     dialog.tCaretakerSName.setText((String) tblCaretakers.getValueAt(rowToChange, 2));
                     dialog.tCaretakerUsername.setText((String) tblCaretakers.getValueAt(rowToChange, 3));
                     dialog.tCaretakerPassword.setText((String) tblCaretakers.getValueAt(rowToChange, 4));
+                    dialog.setVisible(true);
 
                     int caretakerID = (Integer) tblCaretakers.getValueAt(rowToChange, 0);
                     String caretakerFName;
