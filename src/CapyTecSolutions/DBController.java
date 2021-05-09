@@ -61,11 +61,11 @@ public class DBController {
     }
 
     public void addCaretaker(Caretaker caretaker) {
-        String sqlString = new String("INSERT INTO Caretakers (CaretakerFName,CaretakerSName,Username,Password) VALUES('");
+        String sqlString = new String("INSERT INTO Caretaker (CaretakerFName,CaretakerSName,Username,Password) VALUES('");
         sqlString = sqlString + caretaker.getCaretakerFName() + "','";
         sqlString = sqlString + caretaker.getCaretakerSName() + "','";
         sqlString = sqlString + caretaker.getCaretakerUsername() + "','";
-        sqlString = sqlString + caretaker.getCaretakerPassword() + ");";
+        sqlString = sqlString + caretaker.getCaretakerPassword() + "');";
 
         boolean success = database.runSQL(sqlString);
 

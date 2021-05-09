@@ -90,6 +90,7 @@ public class CaretakerManagementMenu extends JFrame {
                 if((!caretakerFName.isEmpty()) && (!caretakerSName.isEmpty()) && (!caretakerUsername.isEmpty()) && (!caretakerPassword.isEmpty())){
                     caretakerManagementMenuController.addCaretaker(caretakerFName,caretakerSName,caretakerUsername,caretakerPassword);
                 }
+                caretakerManagementMenuController.refreshCaretakerTable();
             }
         });
         pnlManange.add(btnAddCaretaker);
@@ -100,6 +101,12 @@ public class CaretakerManagementMenu extends JFrame {
         btnEditCaretaker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                int rowToChange = tblCaretakers.getSelectedRow();
+
+                if(rowToChange >= 0){
+                    
+                }
 
             }
         });

@@ -80,6 +80,7 @@ public class AdministratorMainMenu extends JFrame{
             adminMenuController.loadCaretakerManagementMenu();
             setVisible(false);
         });
+        pnlMenuItems.add(btnManageCaretakers);
 
         btnLogout = new JButton("Log Out");
         btnLogout.setFont(new Font("Arial", Font.PLAIN, 15));

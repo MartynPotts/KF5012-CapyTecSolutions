@@ -59,7 +59,10 @@ public class CapyTecSolutionsController {
     /* Caretaker management menu */
     // Load the caretaker management menu (Add, edit and delete caretakers)
     void loadCaretakerManagementMenu(){
-
+        caretakerManagementMenu = new CaretakerManagementMenu(this);
+        caretakerManagementMenu.setVisible(true);
+        caretakerManagementMenu.displayTableData(data.getCaretakers());
+        loginGUI.setVisible(false);
     }
 
     // Add Caretaker

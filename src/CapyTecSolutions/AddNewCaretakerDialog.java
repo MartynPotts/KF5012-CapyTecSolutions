@@ -35,24 +35,28 @@ public class AddNewCaretakerDialog extends JDialog {
         pnlContent.add(lblCaretakerFName);
 
         tCaretakerFName = new JTextField();
+        tCaretakerFName.setColumns(10);
         pnlContent.add(tCaretakerFName);
 
         JLabel lblCaretakerSName = new JLabel("Caretaker Surname:");
         pnlContent.add(lblCaretakerSName);
 
         tCaretakerSName = new JTextField();
+        tCaretakerSName.setColumns(10);
         pnlContent.add(tCaretakerSName);
 
         JLabel lblCaretakerUsername = new JLabel("Caretaker Username:");
         pnlContent.add(lblCaretakerUsername);
 
         tCaretakerUsername = new JTextField();
+        tCaretakerUsername.setColumns(10);
         pnlContent.add(tCaretakerUsername);
 
         JLabel lblCaretakerPassword = new JLabel("Caretaker Password:");
         pnlContent.add(lblCaretakerPassword);
 
         tCaretakerPassword = new JTextField();
+        tCaretakerPassword.setColumns(10);
         pnlContent.add(tCaretakerPassword);
 
         pnlButtons = new JPanel();
