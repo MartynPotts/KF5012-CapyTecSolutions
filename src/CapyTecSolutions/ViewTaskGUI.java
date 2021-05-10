@@ -102,7 +102,7 @@ public class ViewTaskGUI extends JFrame {
             }
         });
 
-        JButton btnClearFilter = new JButton("Clear");
+        JButton btnClearFilter = new JButton("Clear Filter");
         btnClearFilter.setFont(new Font("Arial", Font.PLAIN, 15));
         btnClearFilter.setSize(200, 20);
         pnlButtons.add(btnClearFilter);
@@ -160,7 +160,7 @@ public class ViewTaskGUI extends JFrame {
                 String submittedBy = (String) tblTasks.getValueAt(rowToEdit, 6);
                 String caretaker;
 
-                if(dialog.btnUpdate.getModel().isPressed()) {
+                if(dialog.btnUpdate.getModel().isEnabled()) {
                     try {
                         title = dialog.tTaskName.getText();
                         location = dialog.tLocation.getText();
@@ -184,7 +184,7 @@ public class ViewTaskGUI extends JFrame {
                     if (!title.isEmpty()) {
                         theViewTaskHandler.editTask(taskId, title, location, timeRequired, priority, description, frequency, submittedBy, caretaker, 0);
                     }
-                    theViewTaskHandler.refreshAllocationTable();
+                    theViewTaskHandler.refreshViewTaskTable();
                 }
 
             }

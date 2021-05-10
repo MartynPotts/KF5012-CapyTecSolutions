@@ -115,7 +115,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
             }
         });
 
-        JButton btnClearFilter = new JButton("Clear");
+        JButton btnClearFilter = new JButton("Clear Filter");
         btnClearFilter.setFont(new Font("Arial", Font.PLAIN, 15));
         btnClearFilter.setSize(200, 20);
         pnlAssign.add(btnClearFilter);
