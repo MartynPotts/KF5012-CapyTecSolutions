@@ -183,7 +183,6 @@ public class DBController {
                 newTask.setTimeRequired(taskList.getInt(9));
                 newTask.setCompleted(taskList.getInt(10));
                 answer.add(newTask);
-                taskList.close();
             }
         } catch (SQLException e) {
             System.out.println("Failed to process");

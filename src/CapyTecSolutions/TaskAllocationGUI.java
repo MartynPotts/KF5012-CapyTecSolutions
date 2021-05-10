@@ -129,7 +129,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
         btnRefresh.setFont(new Font("Arial", Font.PLAIN, 15));
         btnRefresh.setSize(200, 20);
         btnRefresh.addActionListener(e -> {
-            theTaskAllocationHandler.refreshTable();
+            theTaskAllocationHandler.refreshAllocationTable();
         });
         pnlAssign.add(btnRefresh);
 
@@ -158,7 +158,7 @@ public class TaskAllocationGUI extends JFrame implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Task Assigned");
 
-                theTaskAllocationHandler.refreshTable();
+                theTaskAllocationHandler.refreshAllocationTable();
             } catch (Exception ex) {
                 ex.printStackTrace();
 

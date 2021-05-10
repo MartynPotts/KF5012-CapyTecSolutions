@@ -116,7 +116,7 @@ public class ViewTaskGUI extends JFrame {
         btnRefresh.setFont(new Font("Arial", Font.PLAIN, 15));
         btnRefresh.setSize(200, 20);
         btnRefresh.addActionListener(e -> {
-            theViewTaskHandler.refreshTable();
+            theViewTaskHandler.refreshViewTaskTable();
         });
         pnlButtons.add(btnRefresh);
 
@@ -184,7 +184,7 @@ public class ViewTaskGUI extends JFrame {
                     if (!title.isEmpty()) {
                         theViewTaskHandler.editTask(taskId, title, location, timeRequired, priority, description, frequency, submittedBy, caretaker, 0);
                     }
-                    theViewTaskHandler.refreshTable();
+                    theViewTaskHandler.refreshAllocationTable();
                 }
 
             }

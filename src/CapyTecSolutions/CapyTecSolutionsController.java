@@ -108,7 +108,7 @@ public class CapyTecSolutionsController {
         data.assignTask(taskID, assignedTask);
     }
 
-    void refreshTable() {
+    void refreshAllocationTable() {
         taskAllocationGUI.displayTableData(data.getAllTasks());
     }
 
@@ -161,5 +161,9 @@ public class CapyTecSolutionsController {
         viewTaskGUI.setVisible(true);
         viewTaskGUI.displayTableData(data.getAllTasks());
         loginGUI.setVisible(false);
+    }
+
+    void refreshViewTaskTable() {
+        viewTaskGUI.displayTableData(data.getAllTasks());
     }
 }
